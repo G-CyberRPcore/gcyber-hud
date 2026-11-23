@@ -1,0 +1,19 @@
+{
+  "name": "@g-cyberrpcore/gcyber-hud",
+  "version": "1.0.0",
+  "description": "Modular Cyberpunk HUD & Metabolism Resource for G-CyberRPcore / CyberMP",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --check server.js && node --check client.js && node --check config.js"
+  },
+  "keywords": [
+    "cyberpunk2077",
+    "cybermp",
+    "hud",
+    "metabolism",
+    "speedometer",
+    "g-cyberrpcore"
+  ],
+  "author": "G-CyberRPcore Team",
+  "license": "MIT"
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-CyberRPcore HUD</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="crt-overlay"></div>
+
+  <!-- CINEMATIC BARS -->
+  <div class="cinematic-bar cinematic-top"></div>
+  <div class="cinematic-bar cinematic-bottom"></div>
+
+  <!-- --- TOP RIGHT: NEURAL NETWORK & CITIZEN METRICS --- -->
+  <div id="neural-hud">
+    <div class="neural-card">
+      <div class="neural-meta-row">
+        <span id="hud-clock">21:42 NC-ST</span>
+        <span class="location-tag">LOC: <span id="hud-location">WATSON // KABUKI</span></span>
+      </div>
+
+      <div class="currency-row">
+        <span>💵 <span class="cash-amount" id="hud-cash">$E 5,000</span></span>
+        <span>💳 <span class="bank-amount" id="hud-bank">$E 25,000</span></span>
+        <span>🪙 <span class="crypto-amount" id="hud-crypto">150 $CR</span></span>
+      </div>
+    </div>
+
+    <div class="neural-card" style="padding: 6px 14px; font-size: 13.5px;">
+      <div class="citizen-info-row">
+        <span id="hud-citizen-name">Valerie Street</span>
+        <span id="hud-citizen-id" style="color: #94a3b8;">#NC-481924</span>
+        <span class="badge-tag civilian" id="hud-job-badge">Civilian</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- BOTTOM LEFT: CIRCULAR GAUGES SUITE --- -->
+  <div id="status-gauges">
+    <!-- VOICE RANGE & WAVEFORM -->
+    <div class="gauge-item voice-gauge" id="gauge-voice" title="Voice Range (Whisper / Normal / Shout)">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-voice" cx="30" cy="30" r="25" style="stroke-dashoffset: 50;"></circle>
+      </svg>
+      <div class="voice-waveform-bars" id="voice-waves">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+    </div>
+
+    <!-- HEALTH GAUGE -->
+    <div class="gauge-item health" id="gauge-health" title="Health">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-health" cx="30" cy="30" r="25"></circle>
+      </svg>
+      <div class="gauge-icon">❤️</div>
+    </div>
+
+    <!-- ARMOR / SUBDERMAL WEAVE -->
+    <div class="gauge-item armor" id="gauge-armor" title="Subdermal Cyber-Armor">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-armor" cx="30" cy="30" r="25"></circle>
+      </svg>
+      <div class="gauge-icon">🛡️</div>
+    </div>
+
+    <!-- ENERGY / HUNGER GAUGE -->
+    <div class="gauge-item hunger" id="gauge-hunger" title="Energy & Caloric Reserve">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-hunger" cx="30" cy="30" r="25"></circle>
+      </svg>
+      <div class="gauge-icon">⚡</div>
+    </div>
+
+    <!-- HYDRATION / THIRST GAUGE -->
+    <div class="gauge-item thirst" id="gauge-thirst" title="Hydration">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-thirst" cx="30" cy="30" r="25"></circle>
+      </svg>
+      <div class="gauge-icon">💧</div>
+    </div>
+
+    <!-- STRESS / CYBERPSYCHOSIS GAUGE -->
+    <div class="gauge-item stress" id="gauge-stress" title="Neural Stability / Stress">
+      <svg class="gauge-svg" viewBox="0 0 60 60">
+        <circle class="gauge-bg-circle" cx="30" cy="30" r="25"></circle>
+        <circle class="gauge-fill-circle" id="circle-stress" cx="30" cy="30" r="25" style="stroke-dashoffset: 157;"></circle>
+      </svg>
+      <div class="gauge-icon">🧠</div>
+    </div>
+  </div>
+
+  <!-- --- BOTTOM RIGHT: HOLOGRAPHIC VEHICLE DASHBOARD --- -->
+  <div id="vehicle-dashboard">
+    <div class="speedo-top-row">
+      <div class="speed-digital-group">
+        <div class="speed-number" id="speed-number">000</div>
+        <div class="speed-unit">KM/H</div>
+      </div>
+      <div class="gear-indicator" id="gear-indicator">D</div>
+    </div>
+
+    <!-- RPM TACHOMETER BAR -->
+    <div class="rpm-wrapper">
+      <div class="rpm-track">
+        <div class="rpm-fill" id="rpm-fill"></div>
+      </div>
+    </div>
+
+    <!-- VEHICLE TELEMETRY ICONS -->
+    <div class="veh-status-icons">
+      <div class="veh-icon-item active" id="veh-fuel-indicator">
+        <span>⚡ FUEL:</span>
+        <span id="veh-fuel-value">92%</span>
+      </div>
+      <div class="veh-icon-item danger" id="veh-seatbelt-indicator" title="Seatbelt Warning">
+        <span>🔒 BELT</span>
+      </div>
+      <div class="veh-icon-item active" id="veh-engine-indicator" title="Engine Integrity">
+        <span>⚙️ 100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- NOTIFICATIONS STACK --- -->
+  <div id="hud-notifications"></div>
+
+  <!-- --- HUD CUSTOMIZATION SETTINGS MODAL --- -->
+  <div id="hud-settings-modal">
+    <div class="settings-card">
+      <div class="settings-header">
+        <h3>⚙️ G-Cyber HUD Neural Config</h3>
+        <button class="close-settings-btn" onclick="toggleSettingsModal(false)">✕</button>
+      </div>
+
+      <div class="setting-row">
+        <span>Cinematic Letterbox Mode</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-cinematic" onchange="toggleCinematicMode(this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Hide Status Gauges when Full (Auto-Fade)</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-autofade" onchange="toggleAutoFade(this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Show Cyberpsychosis / Stress Gauge</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-stress-gauge" checked onchange="toggleGauge('gauge-stress', this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Show Hydration / Thirst Gauge</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="toggle-thirst-gauge" checked onchange="toggleGauge('gauge-thirst', this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div style="font-size: 12px; color: #64748b; margin-top: 6px;">
+        💡 Tip: Type <strong>/hudmenu</strong> or <strong>/hud</strong> to open this configuration anytime.
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
