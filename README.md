@@ -17,8 +17,8 @@ A futuristic in-game HUD interface featuring high-tech circular dials, dynamic s
 
 ## Installation
 1. Place `gcyber-hud` inside your server's `resources/` directory:
-   ```
-   D:\cybermpserver\resources\gcyber-hud\
+   ```text
+   resources/gcyber-hud/
    ```
 2. Add `gcyber-hud` to your `server.toml`:
    ```toml
